@@ -8,7 +8,13 @@ import os
 import sys
 
 load_dotenv()
-RPC_SECRET = os.getenv("RPC_SECRET", "")
+ARIA2_HOST = os.getenv("ARIA2_HOST", "http://localhost")
+ARIA2_PORT = int(os.getenv("ARIA2_PORT", 6800))
+ARIA2_SECRET = os.getenv("ARIA2_SECRET", "")
+
+aria2 = aria2p.API(
+    client=aria2p.Client(host=ARIA2_HOST, port=ARIA2_PORT, secret=ARIA2_SECRET)
+)
 
 
 class Media(BaseModel):
@@ -92,7 +98,6 @@ def get_download_link(keyword: str) -> str:
 
 
 def download_media(download_link: str):
-    aria2 = aria2p.API(client=aria2p.Client(secret=RPC_SECRET))
     _download = aria2.add_magnet(download_link)
 
 

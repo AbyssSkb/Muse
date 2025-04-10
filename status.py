@@ -3,9 +3,13 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-RPC_SECRET = os.getenv("RPC_SECRET", "")
+ARIA2_HOST = os.getenv("ARIA2_HOST", "http://localhost")
+ARIA2_PORT = int(os.getenv("ARIA2_PORT", 6800))
+ARIA2_SECRET = os.getenv("ARIA2_SECRET", "")
 
-aria2 = aria2p.API(client=aria2p.Client(secret=RPC_SECRET))
+aria2 = aria2p.API(
+    client=aria2p.Client(host=ARIA2_HOST, port=ARIA2_PORT, secret=ARIA2_SECRET)
+)
 downloads = aria2.get_downloads()
 
 
