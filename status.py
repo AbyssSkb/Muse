@@ -35,6 +35,6 @@ for download in downloads:
     print(f"上传速度：{convert_speed(download.upload_speed)}")
     print(f"做种数：{download.num_seeders}")
     print(f"状态：{download.status}")
-    print(f"下载进度：{(download.progress * 100):.2f}%")
+    print(f"下载进度：{(download.progress):.2f}%")
     print(f"预计剩余时间：{download.eta}")
     print()
