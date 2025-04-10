@@ -81,7 +81,28 @@ def get_available_medium(fullname: str) -> list[Media]:
     return medium
 
 
+def calculate_media_priority(media: Media) -> tuple[int, int, float]:
+    match media.resolution:
+        case "2160p":
+            score1 = 1
+        case "1080p":
+            score1 = 2
+        case _:
+            score1 = 3
+
+    match media.source:
+        case "BLURAY":
+            score2 = 1
+        case "WEB":
+            score2 = 2
+        case _:
+            score2 = 3
+
+    return (score1, score2, media.size)
+
+
 def select_best_media(medium: list[Media]) -> Media:
+    medium.sort(key=calculate_media_priority)
     return medium[0]
 
 
