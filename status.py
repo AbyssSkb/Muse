@@ -38,3 +38,5 @@ for download in downloads:
     print(f"下载进度：{(download.progress):.2f}%")
     print(f"预计剩余时间：{download.eta}")
     print()
+
+aria2.purge()
