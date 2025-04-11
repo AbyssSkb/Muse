@@ -108,6 +108,7 @@ def select_best_media(medium: list[Media]) -> Media:
 
 def get_download_link(keyword: str) -> str:
     fullname = get_media_fullname(keyword)
+    print(f"找到匹配结果：{fullname}")
     medium = get_available_medium(fullname)
     best_media = select_best_media(medium=medium)
     print(f"准备下载 {best_media.name} ({best_media.resolution})")
